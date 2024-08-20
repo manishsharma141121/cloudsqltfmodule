@@ -5,11 +5,20 @@ provider "google" {
 
 module "cloud_sql" {
   source                 = "./modules/cloud_sql"
-  project_id             = "your-project-id"
-  instance_name          = "my-sql-instance"
-  database_name          = "my-database"
-  user_name              = "db-user"
-  user_password          = "super-secret-password" # or use a random_password if you don't want to specify
+  project_id             = var.project_id
   region                 = "us-central1"
-  secret_manager_namespace = "your-namespace"
+  instance_name          = var.instance_name
+  database_version       = var.database_version
+  tier                   = var.tier
+}
+
+module "database-instance" {
+  source                    = "./modules/database-instance"
+  project_id                = var.project_id
+  region                    = "us-central1"
+  instance_name             = var.instance_name
+  database_name             = var.database_name
+  user_name                 = var.user_name
+  user_password             = var.user_password # or use a random_password if you don't want to specify
+  secret_manager_namespace  = var.secret_manager_namespace
 }
