@@ -33,3 +33,8 @@ variable "secret_manager_namespace" {
   description = "Namespace for storing secrets in Secret Manager"
   type        = string
 }
+
+variable "secret_id" {
+  description = "secret ID for storing secrets in Secret Manager"
+  type        = string
+}
