@@ -10,6 +10,7 @@ resource "google_sql_database_instance" "instance" {
       enabled = true
     }
   }
+  deletion_protection = false 
 }
 
 resource "google_sql_database" "database" {
